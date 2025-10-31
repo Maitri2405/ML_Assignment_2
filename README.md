@@ -1,24 +1,41 @@
-# 1. Next-Word Prediction using MLP [5 marks]
+## 1. Next-Word Prediction using MLP [5 marks]
 In this question, you will extend the next-character prediction notebook (discussed in class) to a next-word prediction problem.That is you will create a MLP based text generator. You will train the model, visualize learned word embeddings, and finally deploy a Streamlit app for interactive text generation. It is recommended to refer to Andrej Karpathy’s blog post on the [https://karpathy.github.io/2015/05/21/rnn-effectiveness/]
+
 You must complete this task for two datasets: one from Category I (Natural Language) and one from Category II (Structured/Domain Text).
-1.1 Preprocessing and Vocabulary Construction [0.5 mark]
+
+# 1.1 Preprocessing and Vocabulary Construction [0.5 mark]
 For text-based datasets, you can remove special characters except “full stop (.)” so that it can be used to split sentences. However, you cannot ignore special characters for other datasets like for C++ code. You will have to treat text between newlines as a statement. To remove special characters from a line, you can use the following code snippet:
+
 import re
+
 line = re.sub('[^a-zA-Z0-9 \.]', '', line)
+
 It will remove everything except alphanumeric characters, space and full-stop.
+
 Convert the text to lowercase and use unique words to create the vocabulary.
+
 • Report:
+
 	- Vocabulary size
+	
 	- 10 most frequent and 10 least frequent words
+	
 To create X, and y pairs for training, you can use a similar approach used for next-character prediction. For example:
 
+
 You will get something like “. . . . . ---> to” whenever there is a paragraph change.
-1.2 Model Design and Training [1 marks]
+
+# 1.2 Model Design and Training [1 marks]
 Build an MLP-based text generator with the following structure:
+
 	- Embedding dimension: 32 or 64
+	
 	- Hidden layers: 1–2 (1024 neurons each)
+	
 	- Activation: ReLU or Tanh
+	
 	- Output: Softmax over vocabulary
+	
 Use Google Colab or Kaggle for training (use maximum 500-1000 epochs). Start the assignment early, as training takes time. 
  Report in notebook:
 	- Training vs validation loss plot
