@@ -52,53 +52,95 @@ Visualize the embeddings using t-SNE if using more than 2 dimensions or using a 
 
 
 DATASETS:
+
 Category I
+
 Paul Graham essays
-[Wikipedia](http://prize.hutter1.net/) (English)
-Shakespeare
-Leo Tolstoy's War and Peace
-The Adventures of Sherlock Holmes, by Arthur Conan Doyle
+
+http://prize.hutter1.net/ (Wikipedia English)
+
+https://cs.stanford.edu/people/karpathy/char-rnn/shakespeare_input.txt (Shakespeare)
+
+https://cs.stanford.edu/people/karpathy/char-rnn/warpeace_input.txt (Leo Tolstoy's War and Peace)
+
+https://www.gutenberg.org/files/1661/1661-0.txt (The Adventures of Sherlock Holmes, by Arthur Conan Doyle)
+
 Category II
-Maths texbook
-Python or C++ code (Linux Kernel Code)
+
+https://github.com/stacks/stacks-project (Maths texbook)
+
+Python or C++ code ([Linux Kernel Code](https://cs.stanford.edu/people/karpathy/char-rnn/linux_input.txt))
+
 IITGN advisory generation
+
 IITGN website generation
+
 Generate sklearn docs 
+
 Notes generation
+
 Image generation (ascii art, 0-255)
+
 Music Generation
+
 Something comparable in spirit but of your choice (do confirm with TA Neerja)
 
-2. Moons Dataset & Regularization [3 marks]
+# 2. Moons Dataset & Regularization [3 marks]
 
 Generate Make-Moons dataset without using sklearn make_moons. Use default noise 0.2, also create two extra test sets with noise 0.1 and 0.3 for robustness reporting. Make training set and test set with 500 points each. Standardize x after the split using train statistics only. Create a validation split of the train set with 20 percent for model selection. Use random seed 1337.
+
 Train the following models:
+
 1. MLP with hidden layer - early stopping (patience=50)
+
 2. MLP with L1 regularization . L1 gird λ ∈ {1e−6, 3e−6, 1e−5, 3e−5, 1e−4, 3e−4}. Report layerwise sparsity and validation AUROC vs.  λ
+
 3. MLP with L2 regularization (you may vary the penalty coefficient by choose the best one using a validation dataset)
+
 4. Logistic regression with polynomial features (x₁x₂, x₁², etc.)
- Evaluation and Analysis 
+
+ ## Evaluation and Analysis 
 • Evaluate test accuracy on noise = 0.20, and robustness accuracy on 0.10 & 0.30.
+
 • Create a table with test accuracy for the four models on the three test noise levels. Include parameter count.
+
 • Plot decision boundaries side by side for all 4 models with default noise 0.2.
+
 • Discuss:
+
 	- Effect of L1 on sparsity and boundary jaggedness
+	
 	- Effect of L2 on smoothness and margin
+	
 • Add class imbalance (70:30) in the trainset while keeping the testset balanced. Report accuracy and AUROC and discuss the effect of imbalance.
 
-3. MNIST and CNN Experiments [3 marks]
+# 3. MNIST and CNN Experiments [3 marks]
+
 This section explores deep learning for images. You will train MLPs and CNNs on MNIST, compare performance against baseline models, visualize embeddings using t-SNE, and test cross-domain generalization on Fashion-MNIST.
-3.1 Using MLP [1.5 marks]
+
+## 3.1 Using MLP [1.5 marks]
 Train on MNIST dataset using an MLP. The original training dataset contains 60,000 images and the test contains 10,000 images. If you are short on compute, use a stratified subset of a smaller number of images but keep the same test set. Your MLP has 30 neurons in the first layer, 20 in the second layer and then 10 finally for the output layer (corresponding to 10 classes)
+
 Report the following:
+
 • Compare against Random Forest and Logistic Regression. The metrics can be: accuracy, F1-score, confusion matrix. Write your observations and discuss misclassifications.
+
 • Visualize t-SNE of the 20-neuron layer for the 10 digits for the trained and untrained model and compare the two.
+
 • Test the trained MLP on Fashion-MNIST dataset. What do you observe? Compare t-SNE plots for MNIST and Fashion-MNIST embeddings for the layer with 20 neurons.
-3.2 Using CNN [1.5 marks]
+
+## 3.2 Using CNN [1.5 marks]
+
 • Implement a simple CNN with a convolutional layer having 32 filters of size 3x3, a maxpool layer, a fully connected layer with 128 neurons and an output layer with 10 neurons (for the 10 classes) and ReLU activation. Train on MNIST dataset.
+
 • Additionally, use two any pretrained CNNs of your choice (e.g. AlexNet, MobileNet, or EfficientNet) for inference.
+
 • Compare all three models:
+
 	- Accuracy, F1-score, confusion matrix
+	
 	- Model size (number of parameters)
+	
 	- Inference time on test set
-Submission Format: Share a GitHub repo with your training notebooks named “question<number>.ipynb”.  Include textual answers in the notebook itself. For Question 1, put the link to the streamlit app at the top of the notebook.
+	
+
