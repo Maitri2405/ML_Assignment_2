@@ -1,9 +1,9 @@
-## 1. Next-Word Prediction using MLP [5 marks]
+# 1. Next-Word Prediction using MLP [5 marks]
 In this question, you will extend the next-character prediction notebook (discussed in class) to a next-word prediction problem.That is you will create a MLP based text generator. You will train the model, visualize learned word embeddings, and finally deploy a Streamlit app for interactive text generation. It is recommended to refer to Andrej Karpathy’s blog post on the [https://karpathy.github.io/2015/05/21/rnn-effectiveness/]
 
 You must complete this task for two datasets: one from Category I (Natural Language) and one from Category II (Structured/Domain Text).
 
-# 1.1 Preprocessing and Vocabulary Construction [0.5 mark]
+## 1.1 Preprocessing and Vocabulary Construction [0.5 mark]
 For text-based datasets, you can remove special characters except “full stop (.)” so that it can be used to split sentences. However, you cannot ignore special characters for other datasets like for C++ code. You will have to treat text between newlines as a statement. To remove special characters from a line, you can use the following code snippet:
 
 import re
@@ -25,7 +25,7 @@ To create X, and y pairs for training, you can use a similar approach used for n
 
 You will get something like “. . . . . ---> to” whenever there is a paragraph change.
 
-# 1.2 Model Design and Training [1 marks]
+## 1.2 Model Design and Training [1 marks]
 Build an MLP-based text generator with the following structure:
 
 	- Embedding dimension: 32 or 64
@@ -37,25 +37,24 @@ Build an MLP-based text generator with the following structure:
 	- Output: Softmax over vocabulary
 	
 Use Google Colab or Kaggle for training (use maximum 500-1000 epochs). Start the assignment early, as training takes time. 
+
  Report in notebook:
+ 
 	- Training vs validation loss plot
+	
 	- Final validation loss/accuracy
+	
 	- Example predictions and commentary on learning behavior.
+	
 1.3 Embedding Visualization and Interpretation [1 mark]
+
 Visualize the embeddings using t-SNE if using more than 2 dimensions or using a scatter plot if using 2 dimensions and write your observations. For visualizations, you may have to select words with relations like synonyms, antonyms, names and pronouns, verbs and adverbs, words with no relations, and so on. Discuss your observations on clustering patterns and semantic relationships.
-1.4 Streamlit Application [1.5 marks]
-Write a streamlit application that asks users for an input text, and it then predicts the next k words or lines. In the streamlit app, you should have controls for modifying context length, embedding dimension, activation function, random seed, etc. You can use any one of the datasets mentioned. Incorporate temperature control in your streamlit app to control the randomness of predicted words. Refer to this article. 
-Think how you would handle the case where words provided by the user in the streamlit app are not in the vocabulary. There is no need to re-train the model based on the user input. Train two to three variants and accordingly give options to the user.
-1.5 Comparative Analysis [1 mark]
-• Compare your two trained models (Category I vs Category II):
-	- Dataset size, vocabulary, context predictability
-	- Model performance (loss curves, qualitative generations)
-	- Embedding visualizations
-• Summarize insights on how natural vs structured language differs in learnability.
-Datasets:
+
+
+DATASETS:
 Category I
 Paul Graham essays
-Wikipedia (English)
+[Wikipedia](http://prize.hutter1.net/) (English)
 Shakespeare
 Leo Tolstoy's War and Peace
 The Adventures of Sherlock Holmes, by Arthur Conan Doyle
